@@ -1,5 +1,6 @@
 #include "constants.cc"
 #include "square.cc"
+#include "snake.cc"
 
 #include <set>
 
@@ -27,11 +28,12 @@ class Fruit {
       return square_char == fruit_char;
     }
     
-    void tick(std::set<Square>& snake_squares) {
+    void tick(const Snake& snake) {
       TTL--;
+      // TODO if snake head is at loc, then disappear
       if (TTL==0) {
         TTL = fruit_max_TTL;
-        reappear(snake_squares);
+        reappear(const snake_squares);
       }
     }
     

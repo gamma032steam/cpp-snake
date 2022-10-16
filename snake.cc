@@ -2,6 +2,7 @@
 #include <deque>
 #include <set>
 #include "square.cc"
+#include "fruit.cc"
 
 class Snake 
 {
@@ -47,5 +48,8 @@ class Snake
       } else {
         move();
       }
+    }
+    bool is_on_square(const Square& square) const{
+      return squares_set.find(square) != squares_set.end();
     }
 };
