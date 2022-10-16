@@ -6,13 +6,21 @@
 class Fruit {
   private:
     Square location;
-    int TTL;
+    int TTL=fruit_max_TTL;
     void reappear(std::set<Square>& snake_squares) {
-      
+      Square new_loc = Square::get_random();
+      while (snake_squares.find(new_loc) != snake_squares.end()) {
+        new_loc = Square::get_random();
+      }
+      location = new_loc;
+      become_visible();
+    }
+    void become_visible() {
+      square_char = fruit_char;
     }
     char square_char;
   public:
-    void disappear() {
+    void become_invisible() {
       square_char = empty_square_char;
     }
     bool is_visible() const {

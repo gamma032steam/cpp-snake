@@ -17,8 +17,12 @@ class Square {
       return std::to_string(x) + "," + std::to_string(y);
     }
     
-    bool operator==(const Square& s1) {
+    bool operator==(const Square& s1) const{
       return s1.x == x && s1.y == y;
+    }
+    
+    bool operator <(const Square& s1) const{
+      return s1.x < x && s1.y < y;
     }
     
     bool in_board() const {
