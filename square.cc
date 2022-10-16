@@ -1,8 +1,8 @@
-const int board_size = 8;
+#include "constants.cc"
 
 struct Square {
-  int x;
-  int y;
+  const int x;
+  const int y;
   
   Square operator+(const Square s1) const{
     return Square{s1.x+x, s1.y+y};
@@ -20,7 +20,7 @@ struct Square {
     assert(std::isdigit(square[0]));
     assert(square[1] == ",");
     assert(std::isdigit(square[2]));
-    x = std::tostring(square[0])
-    y = std::tostring(square[0])
+    x = std::tostring(square[0]);
+    y = std::tostring(square[0]);
   }
 };
