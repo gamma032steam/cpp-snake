@@ -1,11 +1,22 @@
 #include "constants.cc"
+#include <ctype.h>
+#include <string>
+#include <cassert>
 
 struct Square {
-  const int x;
-  const int y;
+  int x;
+  int y;
   
   Square operator+(const Square s1) const{
     return Square{s1.x+x, s1.y+y};
+  }
+  
+  operator std::string() const {
+    return std::to_string(x) + "," + std::to_string(y);
+  }
+  
+  bool operator==(const Square& s1) {
+    return s1.x == x && s1.y == y;
   }
   
   bool in_board() const {
@@ -14,13 +25,14 @@ struct Square {
   
   Square(int x, int y): x(x), y(y) {}
   
-  // Input format is "1,2"
+  // Input expected is : "1,2"
+  // TODO Accept multidigit nums
   Square(std::string square) {
     assert(square.size() == 3);
     assert(std::isdigit(square[0]));
-    assert(square[1] == ",");
+    assert(square[1] == ',');
     assert(std::isdigit(square[2]));
-    x = std::tostring(square[0]);
-    y = std::tostring(square[0]);
+    x = int(square[0]-'0');
+    y = int(square[2]-'0');
   }
 };
