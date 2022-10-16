@@ -1,3 +1,5 @@
+#include <cassert>
+
 class Snake 
 {
   private:
@@ -7,5 +9,23 @@ class Snake
   public:
     void grow();
     void move();
-    void change_dir;
+    void change_dir(char dir) {
+      switch(dir) {
+        case 'w':
+          dir = {0,-1}
+          break;
+        case 'a':
+          dir = {-1,0}
+          break;
+        case 's':
+          dir = {0,1}
+          break;
+        case 'd':
+          dir = {1,0}
+          break;
+        default:
+          assert(false);
+      }
+    }
+    void tick();
 }
